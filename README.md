@@ -13,7 +13,7 @@
 │
 ├── models
 │   ├── model_lstm.pth     # обученная модель LSTM
-│   ├── model_gru.pth      # обученная модель GRU
+│   ├── model_gru.pth      # обученная модель GRU (здесь не поместилась)
 │
 ├── main.py                # главный файл проекта
 └── requirements.txt       # файл со списком зависимостей
