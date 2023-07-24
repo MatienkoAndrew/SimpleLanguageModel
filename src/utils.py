@@ -6,8 +6,9 @@ from typing import List
 import torch
 from sklearn.model_selection import train_test_split
 from torch.utils.data import Dataset, DataLoader
-from src.config import CONFIG
+import os
 
+from src.config import CONFIG
 from .word_dataset import WordDataset
 
 
@@ -94,3 +95,8 @@ def collate_fn_with_padding(input_batch: List[List[int]], pad_id, device) -> tor
     }
 
     return new_batch
+
+
+def save_model(model, FILENAME):
+    torch.save(model.state_dict(), FILENAME)
+    print(f'Model saved at: {os.path.abspath(FILENAME)}')

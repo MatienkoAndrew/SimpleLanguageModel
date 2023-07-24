@@ -6,7 +6,7 @@ seaborn.set(palette='summer')
 import nltk
 nltk.download('punkt')
 
-from src.utils import load_data, preprocess_data, count_words, create_vocab, prepare_data
+from src.utils import load_data, preprocess_data, count_words, create_vocab, prepare_data, save_model
 from src.config import CONFIG
 from src.model_training import train_model, generate_sequence
 from src.nn_models import LanguageModelGRU, LanguageModelLSTM
@@ -38,12 +38,15 @@ def main() -> int:
     optimizer_gru = torch.optim.Adam(model_gru.parameters())
 
     losses, perplexities = train_model(model_gru, optimizer_gru, criterion, train_dataloader, eval_dataloader, n_epochs=5)
+    save_model(model_gru, './models/model_lstm.pth')
 
     # LSTM: второй эксперимент
     model_lstm = LanguageModelLSTM(hidden_dim=256, vocab_size=len(vocab)).to(device)
     optimizer_lstm = torch.optim.Adam(model_gru.parameters())
 
     losses, perplexities = train_model(model_lstm, optimizer_lstm, criterion, train_dataloader, eval_dataloader, n_epochs=5)
+    save_model(model_lstm, './models/model_gru.pth')
+
     generate_sequence(model_lstm, word2ind, ind2word, starting_seq='по системе гол плюс пас ')
     
     return 0
