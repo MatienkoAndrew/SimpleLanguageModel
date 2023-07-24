@@ -11,6 +11,10 @@
 │   ├── utils.py           # полезные функции для подготовки данных
 │   └── word_dataset.py    # класс Dataset для работы с датасетом IMDb
 │
+├── models
+│   ├── model_lstm.pth     # обученная модель LSTM
+│   ├── model_gru.pth      # обученная модель GRU
+│
 ├── main.py                # главный файл проекта
 └── requirements.txt       # файл со списком зависимостей
 ```
